@@ -1,13 +1,12 @@
-
-import './App.css'
-import LoanForm  from './LoanForm'
+import "./App.css";
+import "./index.css";
+import Home from "./Pages/Home";
 function App() {
-
   return (
-    <div>
-    <LoanForm />
-    </div>
-  )
+    <>
+      <Home />
+    </>
+  );
 }
 
-export default App
+export default App;
