@@ -166,7 +166,7 @@ export default function Home() {
                     </h1>
 
                     {/* العنوان */}
-                    <h2 className="z-40 text-4xl md:text-6xl font-bold text-white mt-[-40px] md:mt-[-60px] drop-shadow-2xl animate-[fadeInUp_1.2s_ease-out_0.3s_forwards]">
+                    <h2 className="z-40 text-4xl md:text-6xl font-bold text-white sm-text-sm mt-[-40px] md:mt-[-60px] drop-shadow-2xl animate-[fadeInUp_1.2s_ease-out_0.3s_forwards]">
                       {trophy.title}
                     </h2>
 
