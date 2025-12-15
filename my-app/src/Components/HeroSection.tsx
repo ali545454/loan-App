@@ -99,7 +99,6 @@ export default function HeroSection() {
     return () => clearInterval(timer);
   }, [currentIndex]);
   // مرجع لملف الصوت حتى لا يعاد إنشاؤه مع كل Render
-  const audioRef = useRef(new Audio(BarcaAnthem));
   return (
     <div className="w-full h-[calc(100vh-55px)] relative group overflow-hidden bg-gray-900">
       {/* 5. الصورة الخلفية مع تأثير الحركة */}
