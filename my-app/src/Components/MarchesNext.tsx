@@ -117,13 +117,13 @@ export default function MatchesNext() {
         <div className="flex items-center justify-center min-[401px]:justify-end gap-2 mb-1">
              <span className="w-2 h-2 rounded-full bg-[#EDBB00] animate-pulse"></span>
              <h3 className="text-[#EDBB00] font-bold tracking-wider text-xs md:text-lg">
-               الأبطال
+               دوري أبطال أوروبا
              </h3>
         </div>
         <p className="text-white text-lg md:text-3xl font-black mb-1 drop-shadow-lg">
           نصف النهائي
         </p>
-        <p className="text-gray-300 text-[10px] md:text-sm font-medium">
+        <p className="text-gray-300 text-[15px] md:text-sm font-medium">
           الكامب نو 🏟️
         </p>
       </div>
