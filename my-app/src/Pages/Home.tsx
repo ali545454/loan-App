@@ -161,12 +161,12 @@ export default function Home() {
                 index === currentTrophy && (
                   <div key={index} className="flex flex-col items-center">
                     {/* السنة - تظهر بتأثير قوي */}
-                    <h1 className="text-[120px] md:text-[180px] font-black text-transparent bg-clip-text bg-gradient-to-b from-[#EDBB00] to-transparent leading-none animate-[fadeInUp_1s_ease-out] opacity-50 select-none">
+                    <h1 className="text-[30px] md:text-[180px] font-black text-transparent bg-clip-text bg-gradient-to-b from-[#EDBB00] to-transparent leading-none animate-[fadeInUp_1s_ease-out] opacity-50 select-none">
                       {trophy.year}
                     </h1>
 
                     {/* العنوان */}
-                    <h2 className="z-40 text-4xl md:text-6xl font-bold text-white sm-text-sm mt-[-40px] md:mt-[-60px] drop-shadow-2xl animate-[fadeInUp_1.2s_ease-out_0.3s_forwards]">
+                    <h2 className="z-40 text-4xl md:text-6xl font-bold text-white  mt-[-40px] md:mt-[-60px] drop-shadow-2xl animate-[fadeInUp_1.2s_ease-out_0.3s_forwards]">
                       {trophy.title}
                     </h2>
 
