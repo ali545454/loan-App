@@ -39,7 +39,7 @@ export default function MatchesNext() {
   return (
     // الحاوية الرئيسية
     // إضافة relative و overflow-hidden عشان الخلفية
-    <div className="w-full py-10 relative overflow-hidden flex flex-col md:flex-row items-center justify-around gap-8 border-t border-white/10 shadow-2xl">
+    <div className="w-full py-10 relative overflow-hidden flex flex-col sm:flex-row items-center justify-around gap-8 border-t border-white/10 shadow-2xl">
       
       {/* === 1. صورة الخلفية (Champions League Theme) === */}
       <div 
