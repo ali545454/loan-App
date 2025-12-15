@@ -3,7 +3,7 @@ import { X, ChevronRight } from "lucide-react";
 import Header from "../Components/Header";
 import HeroSection from "../Components/HeroSection";
 import BarcaAnthem from "../../src/assets/9JdugskAcS0.mp3"; // تأكد من المسار
-
+import MatchesNext from "../Components/MarchesNext";
 // === بيانات البطولات (الـ 5 ألقاب دوري أبطال + السداسية) ===
 const trophies = [
   {
@@ -196,6 +196,7 @@ export default function Home() {
       <div className={viewState !== "home" ? "hidden" : "animate-fade-in"}>
         <Header />
         <HeroSection />
+        <MatchesNext />
       </div>
 
       {/* إضافة Keyframes للأنيميشن في نفس الملف (للتسهيل عليك) */}
