@@ -166,12 +166,12 @@ export default function Home() {
                     </h1>
 
                     {/* العنوان */}
-                    <h2 className="text-4xl md:text-6xl font-bold text-white mt-[-40px] md:mt-[-60px] drop-shadow-2xl animate-[fadeInUp_1.2s_ease-out_0.3s_forwards] opacity-0">
+                    <h2 className="z-40 text-4xl md:text-6xl font-bold text-white mt-[-40px] md:mt-[-60px] drop-shadow-2xl animate-[fadeInUp_1.2s_ease-out_0.3s_forwards]">
                       {trophy.title}
                     </h2>
 
                     {/* الوصف */}
-                    <p className="text-xl text-gray-300 mt-6 max-w-2xl font-light animate-[fadeInUp_1.5s_ease-out_0.5s_forwards] opacity-0">
+                    <p className="text-xl text-gray-300 mt-6 max-w-2xl font-light animate-[fadeInUp_1.5s_ease-out_0.5s_forwards] ">
                       {trophy.desc}
                     </p>
                   </div>

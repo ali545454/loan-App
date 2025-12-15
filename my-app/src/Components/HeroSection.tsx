@@ -132,12 +132,12 @@ export default function HeroSection() {
         </h2>
 
         {/* الوصف */}
-        <p className="text-lg md:text-2xl text-gray-200 max-w-2xl mb-8 leading-relaxed opacity-0 animate-[fadeInUp_1s_ease-out_0.3s_forwards]">
+        <p className="text-lg md:text-2xl text-gray-200 max-w-2xl mb-8 leading-relaxed  animate-[fadeInUp_1s_ease-out_0.3s_forwards]">
           {slides[currentIndex].text}
         </p>
 
         {/* الأزرار */}
-        <div className="flex gap-4 opacity-0 animate-[fadeInUp_1s_ease-out_0.5s_forwards]">
+        <div className="flex gap-4  animate-[fadeInUp_1s_ease-out_0.5s_forwards]">
           <button className="flex items-center gap-2 px-8 py-3 bg-[#A50044] hover:bg-[#800033] text-white font-bold rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(165,0,68,0.5)] hover:shadow-[0_0_30px_rgba(165,0,68,0.8)] transform hover:-translate-y-1">
             اقرأ المزيد <ArrowRight size={20} />
           </button>
