@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 
 export default function MatchesNext() {
-  // 1. المتغيرات والمنطق (فوق الـ return)
-  
-  // تاريخ الماتش (مثلاً 15 يوم من دلوقتي)
-  const matchDate = new Date("2027-05-30T21:00:00").getTime();
+  // 1. التاريخ المستهدف (تاريخ الماتش)
+  const matchDate = new Date("2025-06-30T21:00:00").getTime();
 
-  // المخزن (State)
+  // 2. المخزن (State) للوقت المتبقي
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -14,7 +12,7 @@ export default function MatchesNext() {
     seconds: 0,
   });
 
-  // المطبخ (Logic)
+  // 3. المطبخ (Logic) - العداد
   useEffect(() => {
     const calculateTime = () => {
       const now = new Date().getTime();
@@ -27,89 +25,105 @@ export default function MatchesNext() {
           minutes: Math.floor((difference / 1000 / 60) % 60),
           seconds: Math.floor((difference / 1000) % 60),
         });
+      } else {
+        // لو الماتش بدأ نصفر العداد
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       }
     };
 
-    // الزنان (يشتغل كل ثانية)
+    // تشغيل العداد كل ثانية
     const timer = setInterval(calculateTime, 1000);
+    calculateTime(); // تشغيل فوري عشان ميبقاش فيه تأخير ثانية
 
-    // تنظيف
     return () => clearInterval(timer);
   }, []);
 
-  // دالة صغيرة عشان تحط صفر لو الرقم مفرد (9 تبقى 09)
+  // دالة لتنسيق الأرقام (تضيف صفر لو الرقم أقل من 10)
   const format = (n) => (n < 10 ? `0${n}` : n);
 
-  // 2. الرسم (الـ return)
   return (
-    <div className="w-full py-8 bg-[#151e3d] text-white flex flex-col items-center justify-center gap-6 shadow-xl rounded-xl my-8">
+    // الحاوية الرئيسية
+    // flex-col: في الموبايل العناصر فوق بعض
+    // md:flex-row: في الشاشات الأكبر العناصر جنب بعض
+    // removed: rounded-xl, my-8 (عشان التصميم يكون حاد ومفيهوش هوامش)
+    <div className="w-full py-10 bg-[#151e3d] text-white flex flex-col md:flex-row items-center justify-around gap-8 border-t border-white/10 shadow-2xl">
       
-      {/* قسم اللوجوهات */}
-      <div className="flex items-center justify-center gap-8 md:gap-16">
+      {/* 1. قسم الفريقين (يمين الشاشة في الكبير / فوق في الموبايل) */}
+      <div className="flex items-center gap-6 md:gap-10 order-1 md:order-2">
         {/* برشلونة */}
         <div className="flex flex-col items-center gap-2">
           <img 
             src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg" 
             alt="Barca" 
-            className="w-16 h-16 md:w-24 md:h-24 drop-shadow-lg"
+            className="w-16 h-16 md:w-20 md:h-20 drop-shadow-lg transform hover:scale-110 transition duration-300"
           />
-          <span className="font-bold">Barcelona</span>
+          <span className="font-bold text-lg">برشلونة</span>
         </div>
 
-        {/* كلمة VS */}
-        <div className="text-4xl font-black text-[#EDBB00] italic">VS</div>
+        {/* علامة VS */}
+        <div className="text-3xl font-black text-[#EDBB00] italic animate-pulse">
+          VS
+        </div>
 
-        {/* الخصم (أرسنال) */}
+        {/* الخصم */}
         <div className="flex flex-col items-center gap-2">
           <img 
             src="https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg" 
             alt="Arsenal" 
-            className="w-16 h-16 md:w-24 md:h-24 drop-shadow-lg"
+            className="w-16 h-16 md:w-20 md:h-20 drop-shadow-lg transform hover:scale-110 transition duration-300"
           />
-          <span className="font-bold">Arsenal</span>
+          <span className="font-bold text-lg">أرسنال</span>
         </div>
       </div>
 
-      {/* قسم العداد (Boxes) */}
-      <div className="flex gap-4 text-center direction-ltr">
+      {/* 2. قسم العداد (في النص) */}
+      <div className="flex gap-4 text-center order-2 md:order-1 direction-ltr">
         {/* الثواني */}
         <div className="flex flex-col items-center">
-            <div className="w-16 h-16 bg-[#A50044] rounded-lg flex items-center justify-center text-2xl font-bold border border-white/20">
+            <div className="w-14 h-14 md:w-16 md:h-16 bg-[#A50044] flex items-center justify-center text-xl md:text-2xl font-bold shadow-[0_0_15px_#A50044]">
                 {format(timeLeft.seconds)}
             </div>
-            <span className="text-xs text-gray-400 mt-1">ثانية</span>
+            <span className="text-xs text-gray-400 mt-2 font-bold">ثانية</span>
         </div>
 
         {/* الدقائق */}
         <div className="flex flex-col items-center">
-            <div className="w-16 h-16 bg-white/10 rounded-lg flex items-center justify-center text-2xl font-bold border border-white/20">
+            <div className="w-14 h-14 md:w-16 md:h-16 bg-white/10 flex items-center justify-center text-xl md:text-2xl font-bold border border-white/10">
                 {format(timeLeft.minutes)}
             </div>
-            <span className="text-xs text-gray-400 mt-1">دقيقة</span>
+            <span className="text-xs text-gray-400 mt-2 font-bold">دقيقة</span>
         </div>
 
         {/* الساعات */}
         <div className="flex flex-col items-center">
-            <div className="w-16 h-16 bg-white/10 rounded-lg flex items-center justify-center text-2xl font-bold border border-white/20">
+            <div className="w-14 h-14 md:w-16 md:h-16 bg-white/10 flex items-center justify-center text-xl md:text-2xl font-bold border border-white/10">
                 {format(timeLeft.hours)}
             </div>
-            <span className="text-xs text-gray-400 mt-1">ساعة</span>
+            <span className="text-xs text-gray-400 mt-2 font-bold">ساعة</span>
         </div>
 
         {/* الأيام */}
         <div className="flex flex-col items-center">
-            <div className="w-16 h-16 bg-white/10 rounded-lg flex items-center justify-center text-2xl font-bold border border-white/20">
+            <div className="w-14 h-14 md:w-16 md:h-16 bg-white/10 flex items-center justify-center text-xl md:text-2xl font-bold border border-white/10">
                 {format(timeLeft.days)}
             </div>
-            <span className="text-xs text-gray-400 mt-1">يوم</span>
+            <span className="text-xs text-gray-400 mt-2 font-bold">يوم</span>
         </div>
       </div>
 
-      {/* تفاصيل المباراة */}
-      <div className="text-center mt-2">
-        <h3 className="text-[#EDBB00] font-bold tracking-wider text-sm md:text-base">CHAMPIONS LEAGUE</h3>
-        <p className="text-gray-300 text-sm">Camp Nou, Barcelona</p>
+      {/* 3. تفاصيل المباراة (يسار الشاشة / تحت في الموبايل) */}
+      <div className="text-center md:text-right order-3">
+        <h3 className="text-[#EDBB00] font-bold tracking-wider text-sm md:text-lg mb-1">
+          دوري أبطال أوروبا
+        </h3>
+        <p className="text-white text-xl md:text-2xl font-bold mb-1">
+          نصف النهائي
+        </p>
+        <p className="text-gray-400 text-sm flex items-center justify-center md:justify-end gap-2">
+          ملعب الكامب نو، برشلونة 📍
+        </p>
       </div>
+
     </div>
   );
 }
