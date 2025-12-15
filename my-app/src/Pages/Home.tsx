@@ -161,7 +161,7 @@ export default function Home() {
                 index === currentTrophy && (
                   <div key={index} className="flex flex-col items-center">
                     {/* السنة - تظهر بتأثير قوي */}
-                    <h1 className="text-[100px] md:text-[180px] font-black text-transparent bg-clip-text bg-gradient-to-b from-[#EDBB00] to-transparent leading-none animate-[fadeInUp_1s_ease-out] opacity-50 select-none">
+                    <h1 className="text-[70px] md:text-[180px] font-black text-transparent bg-clip-text bg-gradient-to-b from-[#EDBB00] to-transparent leading-none animate-[fadeInUp_1s_ease-out] opacity-50 select-none">
                       {trophy.year}
                     </h1>
 
