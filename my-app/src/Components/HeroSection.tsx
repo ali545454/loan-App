@@ -1,6 +1,5 @@
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
-import BarcaAnthem from "../../src/assets/9JdugskAcS0.mp3";
 const slides = [
   {
     id: 1,
@@ -101,57 +100,6 @@ export default function HeroSection() {
   }, [currentIndex]);
   // مرجع لملف الصوت حتى لا يعاد إنشاؤه مع كل Render
   const audioRef = useRef(new Audio(BarcaAnthem));
-
-  useEffect(() => {
-    const audio = audioRef.current;
-    audio.volume = 0.4;
-
-    // متغير لحفظ رقم العداد عشان نقدر نلغيه لو حصل أي تغيير
-    let timerId;
-
-    const stopAudio = () => {
-      audio.pause();
-      audio.currentTime = 0;
-      // تنظيف العداد للتأكد
-      if (timerId) clearTimeout(timerId);
-    };
-
-    const playAnthem = async () => {
-      try {
-        await audio.play();
-        console.log("Audio started automatically");
-
-        // الحالة الأولى: اشتغل تلقائي -> نوقف بعد 15 ثانية
-        timerId = setTimeout(() => {
-          stopAudio();
-        }, 15000);
-      } catch (error) {
-        console.log("Autoplay blocked. Waiting for click...");
-
-        // الحالة الثانية: منع المتصفح -> ننتظر الضغطة
-        const playOnClick = () => {
-          audio.play();
-          console.log("Audio started after click");
-
-          // === التصحيح هنا ===
-          // لازم نستدعي stopAudio() بالأقواس، أو نمرر اسمها فقط
-          timerId = setTimeout(stopAudio, 52000.5);
-
-          document.removeEventListener("click", playOnClick);
-        };
-
-        document.addEventListener("click", playOnClick);
-      }
-    };
-
-    playAnthem();
-
-    // تنظيف عند الخروج من الصفحة (Unmount)
-    return () => {
-      stopAudio();
-      if (timerId) clearTimeout(timerId);
-    };
-  }, []);
   return (
     <div className="w-full h-[calc(100vh-55px)] relative group overflow-hidden bg-gray-900">
       {/* 5. الصورة الخلفية مع تأثير الحركة */}
